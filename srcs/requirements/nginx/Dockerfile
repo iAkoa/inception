@@ -1,10 +1,10 @@
 FROM debian:buster
 
-RUN apt-get update -y \
-	&& apt-get upgrade -y \
-	&& apt-get install -y dumb-init \
-	&& apt-get install -y openssl nginx \
-	&& apt-get clean -y
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y dumb-init
+RUN apt-get install -y openssl nginx
+RUN apt-get clean -y
 
 
 # Generate SSL certificate
