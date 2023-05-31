@@ -27,6 +27,8 @@ RUN service mysql start \
 	ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD'; \
 	GRANT ALL PRIVILEGES ON $DB_DATABASE.* TO '$DB_USER_NAME'@'%' IDENTIFIED BY '$DB_USER_PASSWORD'; \
 	FLUSH PRIVILEGES;"
+	&& mysql -u root -e \
+	"CREATE USER '$DB_USER_NAME_NO_PRIVILEGE'@'%' IDENTIFIED BY '$DB_USER_PASSWORD_NO_PRIVILEGE';"
 
 COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 
