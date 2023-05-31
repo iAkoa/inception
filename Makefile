@@ -1,7 +1,7 @@
-DOCKER = sudo docker
+DOCKER = docker
 COMPOSE = $(DOCKER) compose -p inception -f srcs/docker-compose.yml
-MARIADB_VOLUME = /Users/mycomputer/data/mariadb
-WORDPRESS_VOLUME =  /Users/mycomputer/data/wordpress
+MARIADB_VOLUME = /nfs/homes/rmattheo/data/mariadb
+WORDPRESS_VOLUME =  /nfs/homes/rmattheo/data/wordpress
 DEPENDENCIES = $(MARIADB_VOLUME) $(WORDPRESS_VOLUME)
 
 all: up
@@ -43,7 +43,7 @@ clean:
 	$(COMPOSE) down --rmi all --volumes
 
 fclean: clean
-	sudo $(RM) -r /Users/mycomputer/data/*
+	$(RM) -r /nfs/homes/rmattheo/data/*
 
 prune: down fclean
 	$(DOCKER) system prune -a -f
